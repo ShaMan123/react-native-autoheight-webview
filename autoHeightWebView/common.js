@@ -65,10 +65,10 @@ function onWidthUpdated(width, props) {
     props.onWidthUpdated && props.onWidthUpdated(width);
 }
 
-function onHeightWidthUpdated(height, width, props) {
+function onSizeUpdated(height, width, props) {
     onHeightUpdated(height, props);
     onWidthUpdated(width, props);
-    props.onHeightWidthUpdated && props.onHeightWidthUpdated(height, width);
+    props.onSizeUpdated && props.onSizeUpdated(height, width);
 }
 
 const domMutationObserveScript = 
@@ -81,4 +81,4 @@ observer.observe(document, {
 });
 `;
 
-export { getScript, onHeightUpdated, onWidthUpdated, onHeightWidthUpdated, domMutationObserveScript };
+export { getScript, onHeightUpdated, onWidthUpdated, onSizeUpdated, domMutationObserveScript };

@@ -19,7 +19,7 @@ import PropTypes from 'prop-types';
 
 import Immutable from 'immutable';
 
-import { getScript, onHeightUpdated, onWidthUpdated, onHeightWidthUpdated, domMutationObserveScript } from './common.js';
+import { getScript, onHeightUpdated, onWidthUpdated, onSizeUpdated, domMutationObserveScript } from './common.js';
 
 const RCTAutoHeightWebView = requireNativeComponent('RCTAutoHeightWebView', AutoHeightWebView, {
   nativeOnly: {
@@ -39,7 +39,7 @@ export default class AutoHeightWebView extends PureComponent {
     source: WebView.propTypes.source,
       onHeightUpdated: PropTypes.func,
       onWidthUpdated: PropTypes.func,
-      onHeightWidthUpdated: PropTypes.func,
+      onSizeUpdated: PropTypes.func,
       shouldResizeWidth: PropTypes.bool,
     customScript: PropTypes.string,
     customStyle: PropTypes.string,
@@ -178,8 +178,8 @@ export default class AutoHeightWebView extends PureComponent {
                       ? Animated.timing(this.opacityAnimatedValue, {
                           toValue: 1,
                           duration: animationDuration
-                      }).start(() => onHeightWidthUpdated(height, width, this.props))
-                      : onHeightWidthUpdated(height, width, this.props);
+                      }).start(() => onSizeUpdated(height, width, this.props))
+                      : onSizeUpdated(height, width, this.props);
               }
           );
       }
