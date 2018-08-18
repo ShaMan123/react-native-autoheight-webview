@@ -65,10 +65,10 @@ function onWidthUpdated(width, props) {
     props.onWidthUpdated && props.onWidthUpdated(width);
 }
 
-function onSizeUpdated(height, width, props) {
+function onSizeUpdated({ height, width }, props) {
     onHeightUpdated(height, props);
     onWidthUpdated(width, props);
-    props.onSizeUpdated && props.onSizeUpdated(height, width);
+    props.onSizeUpdated && props.onSizeUpdated({ height, width });
 }
 
 const domMutationObserveScript = 

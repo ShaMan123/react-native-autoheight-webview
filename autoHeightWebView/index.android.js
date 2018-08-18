@@ -178,8 +178,8 @@ export default class AutoHeightWebView extends PureComponent {
                       ? Animated.timing(this.opacityAnimatedValue, {
                           toValue: 1,
                           duration: animationDuration
-                      }).start(() => onSizeUpdated(height, width, this.props))
-                      : onSizeUpdated(height, width, this.props);
+                      }).start(() => onSizeUpdated({ height, width }, this.props))
+                      : onSizeUpdated({ height, width }, this.props);
               }
           );
       }
